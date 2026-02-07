@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: controller-app
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Microsoft Entra ID issuer URI — replace <tenant-id> with your actual tenant
+          issuer-uri: https://login.microsoftonline.com/<tenant-id>/v2.0
+
+# ControllerApp audience — tokens must contain this value in the 'aud' claim
+app:
+  security:
+    audience: controller-app
+
+logging:
+  level:
+    com.controllerapp: INFO
+    com.controllerapp.audit: INFO
+    org.springframework.security: WARN
